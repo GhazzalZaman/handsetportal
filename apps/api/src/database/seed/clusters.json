@@ -1,0 +1,5 @@
+{
+  "_comment": "TODO: supply approved cluster definitions and map center codes to cluster codes. Do not invent assignments.",
+  "clusters": [],
+  "centerToCluster": {}
+}

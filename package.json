@@ -1,0 +1,44 @@
+{
+  "name": "handset-portal",
+  "private": true,
+  "packageManager": "pnpm@10.28.2",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @handset/shared build && pnpm --parallel --filter @handset/web --filter @handset/api dev",
+    "build": "pnpm -r build",
+    "lint": "eslint .",
+    "typecheck": "pnpm --filter @handset/shared build && pnpm -r typecheck",
+    "test": "pnpm --filter @handset/shared build && pnpm -r test",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "prepare": "husky",
+    "db:migration:generate": "pnpm --filter @handset/api db:migration:generate",
+    "db:migration:create": "pnpm --filter @handset/api db:migration:create",
+    "db:migrate": "pnpm --filter @handset/api db:migrate",
+    "db:revert": "pnpm --filter @handset/api db:revert",
+    "db:seed": "pnpm --filter @handset/shared build && pnpm --filter @handset/api db:seed",
+    "db:status": "pnpm --filter @handset/api db:status",
+    "db:seed:demo:clear": "pnpm --filter @handset/shared build && pnpm --filter @handset/api db:seed:demo:clear",
+    "inventory:reconcile": "pnpm --filter @handset/api inventory:reconcile"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.0",
+    "eslint": "^10.12.0",
+    "eslint-config-prettier": "^10.1.0",
+    "prettier": "^3.7.0",
+    "typescript": "~5.9.3",
+    "typescript-eslint": "^8.50.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.0",
+    "@types/node": "^24.10.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx,js,mjs}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "*.{json,md,yaml,yml,css}": "prettier --write"
+  }
+}
